@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject diamond;
 
     public int health;
+    public Slider healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -61,12 +63,12 @@ public class EnemyMovement : MonoBehaviour
     {
         if(!dead)
         {
-            if(Vector3.Distance(player.transform.position, transform.position) <= 10f && Vector3.Distance(player.transform.position, transform.position) >= 5f && player.transform.position.x < transform.position.x)
+            if(Vector2.Distance(player.transform.position, transform.position) <= 10f && player.transform.position.x < transform.position.x)
             {
                 movingRight = false;
                 speed = chaseSpeed;
             }
-            else if(Vector3.Distance(player.transform.position, transform.position) <= 10f && Vector3.Distance(player.transform.position, transform.position) >= 5f  && player.transform.position.x > transform.position.x)
+            else if(Vector2.Distance(player.transform.position, transform.position) <= 10f && player.transform.position.x > transform.position.x)
             {
                 movingRight = true;
                 speed = chaseSpeed;

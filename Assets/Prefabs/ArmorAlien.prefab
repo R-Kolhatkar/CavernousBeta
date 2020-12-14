@@ -231,11 +231,14 @@ MonoBehaviour:
   chaseSpeed: 4
   leftWayPoint: {fileID: 0}
   rightWayPoint: {fileID: 0}
+  stoppingDistance: 3
+  retreatDistance: 5
   player: {fileID: 0}
-  startDazedTime: 0
-  deathEffect: {fileID: 0}
+  startDazedTime: 5
+  deathEffect: {fileID: 1141034791725796117, guid: 3b0c09249c06f2f4d8ab07333a309a47, type: 3}
   diamond: {fileID: 0}
   health: 3
+  healthBar: {fileID: 0}
 --- !u!95 &4274445961472015406
 Animator:
   serializedVersion: 3
