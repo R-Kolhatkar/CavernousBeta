@@ -12,6 +12,9 @@ public class EnemyMovement : MonoBehaviour
     bool movingRight = true;
     Rigidbody2D rb;
 
+    public float stoppingDistance;
+    public float retreatDistance;
+
     public GameObject player;
 
     Animator anim;
@@ -62,15 +65,18 @@ public class EnemyMovement : MonoBehaviour
             {
                 movingRight = false;
                 speed = chaseSpeed;
-            }else if(Vector3.Distance(player.transform.position, transform.position) <= 10f && Vector3.Distance(player.transform.position, transform.position) >= 5f  && player.transform.position.x > transform.position.x)
+            }
+            else if(Vector3.Distance(player.transform.position, transform.position) <= 10f && Vector3.Distance(player.transform.position, transform.position) >= 5f  && player.transform.position.x > transform.position.x)
             {
                 movingRight = true;
                 speed = chaseSpeed;
-            }else if (transform.position.x > rightWayPoint.position.x)
+            }
+            else if (transform.position.x > rightWayPoint.position.x)
             {
                 movingRight = false;
                 speed = normalSpeed;
-            }else if (transform.position.x < leftWayPoint.position.x)
+            }
+            else if (transform.position.x < leftWayPoint.position.x)
             {
                 movingRight = true;
                 speed = normalSpeed;
