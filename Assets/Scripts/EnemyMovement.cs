@@ -21,8 +21,13 @@ public class EnemyMovement : MonoBehaviour
     Animator anim;
     bool dead = false;
 
+    bool attackMode = false;
+    bool attackRight = false;
+
     float dazedTime;
     public float startDazedTime;
+
+    public GameObject projectile;
 
     public GameObject deathEffect;
     GameObject effect;
@@ -30,7 +35,6 @@ public class EnemyMovement : MonoBehaviour
     public GameObject diamond;
 
     public int health;
-    public Slider healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -63,44 +67,68 @@ public class EnemyMovement : MonoBehaviour
     {
         if(!dead)
         {
-            if(Vector2.Distance(player.transform.position, transform.position) <= 10f && player.transform.position.x < transform.position.x)
+            /* if(Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x < transform.position.x)
             {
-                movingRight = false;
+                attackMode = true;
+                attackRight = false;
+                // movingRight = false;
                 speed = chaseSpeed;
             }
-            else if(Vector2.Distance(player.transform.position, transform.position) <= 10f && player.transform.position.x > transform.position.x)
+            else if(Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x > transform.position.x)
             {
-                movingRight = true;
+                attackMode = true;
+                attackRight = true;
+                // movingRight = true;
                 speed = chaseSpeed;
             }
-            else if (transform.position.x > rightWayPoint.position.x)
+            else */ if (transform.position.x > rightWayPoint.position.x)
             {
+                // attackMode = false;
+                // attackRight = false;
                 movingRight = false;
                 speed = normalSpeed;
             }
             else if (transform.position.x < leftWayPoint.position.x)
             {
+                // attackMode = false;
+                // attackRight = false;
                 movingRight = true;
                 speed = normalSpeed;
             }
 
-            if (movingRight == true)
+            Debug.Log(attackMode + "\t" + attackRight + "\t" + movingRight + "\t" + speed);
+            
+            if(!attackMode)
             {
-                MoveRight();
+                Debug.Log("Not Attack Mode");
+                if (movingRight == true)
+                {
+                    MoveRight();
+                }
+                else
+                {
+                    MoveLeft();
+                }
             }
-            else
+            /* else
             {
-                MoveLeft();
-            }
-        }
-        else
-        {
-
+                Debug.Log("Attack Mode");
+                if(attackRight == true)
+                {
+                    MoveAttackRight();
+                }
+                else
+                {
+                    MoveAttackLeft();
+                }
+            } */
         }
     }
 
     void MoveLeft()
     {
+        anim.SetBool("isWalking", true);
+        Debug.Log("MoveLeft");
         transform.Translate(-2 * Time.deltaTime * speed, 0, 0);
         transform.localScale = new Vector2(-4, 4);
         diamond.transform.position = transform.position;
@@ -108,9 +136,27 @@ public class EnemyMovement : MonoBehaviour
 
     void MoveRight()
     {
+        anim.SetBool("isWalking", true);
+        Debug.Log("MoveRight");
         transform.Translate(2 * Time.deltaTime * speed, 0, 0);
         transform.localScale = new Vector2(4, 4);
         diamond.transform.position = transform.position;
+    }
+
+    void MoveAttackLeft()
+    {
+        Debug.Log("AttackLeft");
+        transform.localScale = new Vector2(-4, 4);
+        anim.SetTrigger("Attack");
+        // Instantiate(projectile, transform.position, Quaternion.identity);
+    }
+
+    void MoveAttackRight()
+    {
+        Debug.Log("AttackRight");
+        transform.localScale = new Vector2(4, 4);
+        anim.SetTrigger("Attack");
+        // Instantiate(projectile, transform.position, Quaternion.identity);
     }
 
     public void TakeDamage(int damage)

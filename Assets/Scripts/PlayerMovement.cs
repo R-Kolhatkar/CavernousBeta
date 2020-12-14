@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         diamondText.text = "DIAMONDS: " + score;
         if (health > 0)
         {
+            CheckEsc();
             Move();
             Jump();
             CheckIfGrounded();
@@ -55,7 +56,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            RestartLevel();
+            gameOver.SetActive(true);
+        }
+    }
+
+    void CheckEsc()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameOver.SetActive(true);
         }
     }
 
