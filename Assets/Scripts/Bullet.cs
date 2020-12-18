@@ -11,9 +11,15 @@ public class Bullet : MonoBehaviour
     public GameObject destroyEffect;
     GameObject effect;
 
+    AudioSource source;
+    float volLowRange = 0.5f;
+    float volHighRange = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
+
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
 
@@ -31,6 +37,7 @@ public class Bullet : MonoBehaviour
         EnemyMovement enemy = hitInfo.GetComponent<EnemyMovement>();
         if (enemy != null)
         {
+            Debug.Log("Hit Enemy");
             enemy.TakeDamage(damage);
         }
 

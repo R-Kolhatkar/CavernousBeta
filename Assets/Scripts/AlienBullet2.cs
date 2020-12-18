@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AlienBullet2 : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 50f;
     public int damage = 1;
     public float lifeTime;
     Rigidbody2D rb;

@@ -69,6 +69,10 @@
      <Compile Include="Assets\Crystal_Mine\Spline_Tool\Scripts\Math_Functions.cs" />
      <Compile Include="Assets\Scripts\AlienBullet.cs" />
      <Compile Include="Assets\Scripts\AlienBullet2.cs" />
+     <Compile Include="Assets\Scripts\Enemy2AI.cs" />
+     <Compile Include="Assets\Scripts\AudioManagerScript.cs" />
+     <Compile Include="Assets\Scripts\Sound.cs" />
+     <Compile Include="Assets\AudioManager.cs" />
      <None Include="Assets\Crystal_Mine\Spline_Tool\Scripts\LICENSE.txt" />
      <None Include="Assets\2d Free Pixel Art Realistic Crystals Pack\Documentation\2d Pixel Art Realistic Crystals Pack.txt" />
  <Reference Include="Unity.Timeline.Editor">
@@ -310,6 +314,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>D:/Unity Projects/CavernousMaster/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -661,6 +668,18 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{342399B2-F67A-EC69-F59A-9D141EBC9C05}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{AC105AEB-ED00-0223-EFC7-8915FC99B23D}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{AE12A596-A394-A0E0-DD2D-19E509DBB0B7}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{EF9D85C9-BC48-4B80-6ED5-B364EF2CCC05}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
