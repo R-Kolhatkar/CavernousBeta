@@ -41,6 +41,8 @@ public class EnemyMovement : MonoBehaviour
 
     public int health;
 
+    int maxBullets = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,14 +74,14 @@ public class EnemyMovement : MonoBehaviour
     {
         if(!dead)
         {
-            if(Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x < transform.position.x)
+            if(Vector2.Distance(player.transform.position, transform.position) <= 10f && Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x < transform.position.x)
             {
                 attackMode = true;
                 attackRight = false;
                 // movingRight = false;
                 speed = chaseSpeed;
             }
-            else if(Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x > transform.position.x)
+            else if(Vector2.Distance(player.transform.position, transform.position) <= 10f && Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x > transform.position.x)
             {
                 attackMode = true;
                 attackRight = true;
@@ -158,12 +160,22 @@ public class EnemyMovement : MonoBehaviour
         // transform.eulerAngles = new Vector3(0, 0, 0);
         transform.localScale = new Vector2(-4, 4);
         anim.SetTrigger("Attack");
-        StartCoroutine(ShootBulletLeft(5f));
+        StartCoroutine(ShootBulletLeft(1f));
     }
 
     IEnumerator ShootBulletLeft(float delay)
     {
-        Instantiate(projectileLeft, shotPoint.position, transform.rotation);
+        if(maxBullets % 50 == 0)
+        {
+            Instantiate(projectileLeft, shotPoint.position, transform.rotation);
+        }
+
+        maxBullets--;
+
+        if (maxBullets <= 0)
+        {
+            maxBullets = 100;
+        }
 
         yield return new WaitForSeconds(delay);
     }
@@ -174,12 +186,22 @@ public class EnemyMovement : MonoBehaviour
         transform.localScale = new Vector2(4, 4);
         // transform.eulerAngles = new Vector3(0, 180, 0);
         anim.SetTrigger("Attack");
-        StartCoroutine(ShootBulletRight(5f));
+        StartCoroutine(ShootBulletRight(1f));
     }
 
     IEnumerator ShootBulletRight(float delay)
     {
-        Instantiate(projectileRight, shotPoint.position, transform.rotation);
+        if (maxBullets % 50 == 0)
+        {
+            Instantiate(projectileRight, shotPoint.position, transform.rotation);
+        }
+
+        maxBullets--;
+
+        if(maxBullets <= 0)
+        {
+            maxBullets = 100;
+        }
 
         yield return new WaitForSeconds(delay);
     }
