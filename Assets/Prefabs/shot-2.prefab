@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5103123777680057790}
   - component: {fileID: 8359066742128996634}
-  - component: {fileID: 6402615821028516259}
   - component: {fileID: -4730495377189738750}
   - component: {fileID: 2204158862224009315}
+  - component: {fileID: 6842366990001740489}
   m_Layer: 0
   m_Name: shot-2
   m_TagString: Untagged
@@ -85,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6402615821028516259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069308980251569980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2185bb6c3e1fe434e841ff918cb5d15a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!58 &-4730495377189738750
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +95,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -129,9 +116,25 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6842366990001740489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069308980251569980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65ffd6401ff51d47b318eae03a677f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  damage: 1
+  lifeTime: 1.5
+  destroyEffect: {fileID: 973749709509482877, guid: 0865de17b153acd418af5afab080ec8c, type: 3}

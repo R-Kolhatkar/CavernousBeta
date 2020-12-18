@@ -20,7 +20,7 @@ public class DiamondController : MonoBehaviour
 
     void CheckPlayerPosition()
     {
-        if (GetComponent<SpriteRenderer>().enabled == true && Vector3.Distance(player.transform.position, transform.position) <= 1f)
+        if (GetComponent<SpriteRenderer>().enabled == true && Vector3.Distance(player.transform.position, transform.position) <= 3f)
         {
             if(gameObject.CompareTag("Diamond"))
             {

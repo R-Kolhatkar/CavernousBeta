@@ -6,16 +6,12 @@ public class Spikes : MonoBehaviour
 {
     float ActiveTimer;
     bool active = false;
-
-    public AudioClip sound;
-    AudioSource audio;
     
     // Start is called before the first frame update
     void Start()
     {
         ActiveTimer = 20f;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,7 +45,6 @@ public class Spikes : MonoBehaviour
         if (player != null)
         {
             player.health -= 10;
-            audio.PlayOneShot(sound, 1f);
         }
     }
 }

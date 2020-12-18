@@ -11,8 +11,6 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPos;
     public float attackRange;
 
-    AudioSource shoot;
-    public AudioClip sound;
     // public int damage;
 
     Animator anim;
@@ -45,7 +43,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 anim.SetTrigger("Shoot");
                 Instantiate(projectile, shotPoint.position, transform.rotation);
-                shoot.PlayOneShot(sound, 1f);
             }
             timeBetweenAttack = startTimeBetweenAttack;
         }

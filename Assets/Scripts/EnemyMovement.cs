@@ -24,10 +24,15 @@ public class EnemyMovement : MonoBehaviour
     bool attackMode = false;
     bool attackRight = false;
 
+    public Transform shotPoint;
+
     float dazedTime;
     public float startDazedTime;
 
-    public GameObject projectile;
+    float attackTimer = 1000;
+
+    public GameObject projectileRight;
+    public GameObject projectileLeft;
 
     public GameObject deathEffect;
     GameObject effect;
@@ -67,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if(!dead)
         {
-            /* if(Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x < transform.position.x)
+            if(Vector2.Distance(player.transform.position, transform.position) <= 5f && player.transform.position.x < transform.position.x)
             {
                 attackMode = true;
                 attackRight = false;
@@ -81,17 +86,17 @@ public class EnemyMovement : MonoBehaviour
                 // movingRight = true;
                 speed = chaseSpeed;
             }
-            else */ if (transform.position.x > rightWayPoint.position.x)
+            else if (transform.position.x > rightWayPoint.position.x)
             {
-                // attackMode = false;
-                // attackRight = false;
+                attackMode = false;
+                attackRight = false;
                 movingRight = false;
                 speed = normalSpeed;
             }
             else if (transform.position.x < leftWayPoint.position.x)
             {
-                // attackMode = false;
-                // attackRight = false;
+                attackMode = false;
+                attackRight = false;
                 movingRight = true;
                 speed = normalSpeed;
             }
@@ -110,7 +115,7 @@ public class EnemyMovement : MonoBehaviour
                     MoveLeft();
                 }
             }
-            /* else
+            else
             {
                 Debug.Log("Attack Mode");
                 if(attackRight == true)
@@ -121,7 +126,9 @@ public class EnemyMovement : MonoBehaviour
                 {
                     MoveAttackLeft();
                 }
-            } */
+
+                attackMode = false;
+            }
         }
     }
 
@@ -130,6 +137,7 @@ public class EnemyMovement : MonoBehaviour
         anim.SetBool("isWalking", true);
         Debug.Log("MoveLeft");
         transform.Translate(-2 * Time.deltaTime * speed, 0, 0);
+        // transform.eulerAngles = new Vector3(0, 0, 0);
         transform.localScale = new Vector2(-4, 4);
         diamond.transform.position = transform.position;
     }
@@ -139,6 +147,7 @@ public class EnemyMovement : MonoBehaviour
         anim.SetBool("isWalking", true);
         Debug.Log("MoveRight");
         transform.Translate(2 * Time.deltaTime * speed, 0, 0);
+        // transform.eulerAngles = new Vector3(0, 180, 0);
         transform.localScale = new Vector2(4, 4);
         diamond.transform.position = transform.position;
     }
@@ -146,17 +155,33 @@ public class EnemyMovement : MonoBehaviour
     void MoveAttackLeft()
     {
         Debug.Log("AttackLeft");
+        // transform.eulerAngles = new Vector3(0, 0, 0);
         transform.localScale = new Vector2(-4, 4);
         anim.SetTrigger("Attack");
-        // Instantiate(projectile, transform.position, Quaternion.identity);
+        StartCoroutine(ShootBulletLeft(5f));
+    }
+
+    IEnumerator ShootBulletLeft(float delay)
+    {
+        Instantiate(projectileLeft, shotPoint.position, transform.rotation);
+
+        yield return new WaitForSeconds(delay);
     }
 
     void MoveAttackRight()
     {
         Debug.Log("AttackRight");
         transform.localScale = new Vector2(4, 4);
+        // transform.eulerAngles = new Vector3(0, 180, 0);
         anim.SetTrigger("Attack");
-        // Instantiate(projectile, transform.position, Quaternion.identity);
+        StartCoroutine(ShootBulletRight(5f));
+    }
+
+    IEnumerator ShootBulletRight(float delay)
+    {
+        Instantiate(projectileRight, shotPoint.position, transform.rotation);
+
+        yield return new WaitForSeconds(delay);
     }
 
     public void TakeDamage(int damage)

@@ -60,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // TODO: If ESC is pressed, direct to Quit Panel, not Game Over Panel
+    // Quit Panel should close application entirely
     void CheckEsc()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
