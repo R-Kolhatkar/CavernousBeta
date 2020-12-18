@@ -67,8 +67,6 @@
      <Compile Include="Assets\Scripts\SceneButton.cs" />
      <Compile Include="Assets\Scripts\Spikes.cs" />
      <Compile Include="Assets\Crystal_Mine\Spline_Tool\Scripts\Math_Functions.cs" />
-     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
-     <Compile Include="Assets\Scripts\FollowPath.cs" />
      <Compile Include="Assets\Scripts\AlienBullet.cs" />
      <Compile Include="Assets\Scripts\AlienBullet2.cs" />
      <None Include="Assets\Crystal_Mine\Spline_Tool\Scripts\LICENSE.txt" />

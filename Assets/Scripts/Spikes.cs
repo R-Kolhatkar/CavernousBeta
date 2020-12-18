@@ -10,7 +10,7 @@ public class Spikes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ActiveTimer = 20f;
+        ActiveTimer = 10f;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -20,10 +20,10 @@ public class Spikes : MonoBehaviour
         if(!active)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            ActiveTimer -= 1;
+            ActiveTimer -= Time.deltaTime;
             if(ActiveTimer <= 0)
             {
-                ActiveTimer = 20f;
+                ActiveTimer = 10f;
                 active = true;
             }
         }
@@ -33,7 +33,7 @@ public class Spikes : MonoBehaviour
             ActiveTimer -= Time.deltaTime;
             if (ActiveTimer <= 0)
             {
-                ActiveTimer = 20f;
+                ActiveTimer = 10f;
                 active = false;
             }
         }
@@ -42,7 +42,7 @@ public class Spikes : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
-        if (player != null)
+        if (player != null && gameObject.GetComponent<SpriteRenderer>().enabled == true)
         {
             player.health -= 10;
         }
