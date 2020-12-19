@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 2f1b605e4a72b3b44a033f641952f3d2
   - enabled: 1
+    path: Assets/Scenes/3DMine.unity
+    guid: 56c4afabb9296bd428e6e430c2ef168e
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: cfccbfb0bbd5de640b57db3f40c90f51
+  - enabled: 1
+    path: Assets/Scenes/MinerScene.unity
+    guid: 924229f89f67d294aab9b5fda100b6e9
   m_configObjects: {}
