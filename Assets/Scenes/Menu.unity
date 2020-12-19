@@ -1427,10 +1427,10 @@ MonoBehaviour:
     the player''s health by ten points. You can regain the health points by collecting
     the green diamonds, which will restore ten health points each.
 
-    If you have
-    enough diamonds, you will be able to find out more about the alien invasion of
-    the cave from a miner who has been freed because of the aliens'' defeat in the
-    2D platformer level.
+    Once you
+    have cleared the level, you will be able to find out more about the alien invasion
+    of the cave from a miner who has been freed because of the aliens'' defeat in
+    the 2D platformer level.
 
 
     CONTROLS
