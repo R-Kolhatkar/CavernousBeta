@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         if(timeBetweenAttack <= 0)
         {
             // Player uses Melee Weapon (pickaxe)
-            if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
+            if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetMouseButtonDown(1))
             {
                 anim.SetTrigger("Attack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
             // Player uses Range Weapon (Revolver)
-            else if(Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+            else if(Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetMouseButtonDown(0))
             {
                 anim.SetTrigger("Shoot");
                 Instantiate(projectile, shotPoint.position, transform.rotation);

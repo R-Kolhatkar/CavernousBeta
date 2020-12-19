@@ -8,7 +8,7 @@ public class SceneButton : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("3DMine");
     }
 
     public void RenderControls()

@@ -23,22 +23,23 @@ public class PlayerMovement : MonoBehaviour
     public Text diamondText;
     public GameObject gameOver;
     public GameObject levelPassed;
+    public GameObject quitGame;
 
     int maxAliens;
     public int numAliens;
 
-    // public GameObject gate;
+    public GameObject gate;
 
     private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        maxAliens = 4;
-        numAliens = 4;
+        maxAliens = 8;
+        numAliens = 8;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        // gate.GetComponent<SpriteRenderer>().enabled = false;
+        gate.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -66,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            gameOver.SetActive(true);
+            quitGame.SetActive(true);
         }
     }
 
@@ -116,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            // health -= 2;
         } else
         {
             anim.SetBool("isJumping", false);
@@ -149,17 +149,12 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGate()
     {
-        /* if(gate.GetComponent<SpriteRenderer>().enabled == false && numAliens <= (maxAliens / 2))
+        if(gate.GetComponent<SpriteRenderer>().enabled == false && numAliens <= (maxAliens / 2))
         {
             Debug.Log(maxAliens + "\t" + numAliens);
             gate.GetComponent<SpriteRenderer>().enabled = true;
         }
-        if(gate.GetComponent<SpriteRenderer>().enabled == true && Vector3.Distance(transform.position, gate.transform.position) <= 1f)
-        {
-            levelPassed.SetActive(true);
-        } */
-
-        if(numAliens <= 0)
+        if(gate.GetComponent<SpriteRenderer>().enabled == true && Vector3.Distance(transform.position, gate.transform.position) <= 5f)
         {
             levelPassed.SetActive(true);
         }
@@ -167,13 +162,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void RestartLevel()
     {
-        // gate.GetComponent<SpriteRenderer>().enabled = false;
+        gate.GetComponent<SpriteRenderer>().enabled = false;
         SceneManager.LoadScene("Level1");
     }
 
     public void MainMenu()
     {
-        // gate.GetComponent<SpriteRenderer>().enabled = false;
+        gate.GetComponent<SpriteRenderer>().enabled = false;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void Resume()
+    {
+        quitGame.SetActive(false);
     }
 }

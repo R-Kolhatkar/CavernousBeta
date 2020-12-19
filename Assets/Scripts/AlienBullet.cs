@@ -11,9 +11,15 @@ public class AlienBullet : MonoBehaviour
     public GameObject destroyEffect;
     GameObject effect;
 
+    AudioSource source;
+    public AudioClip playerImpacted;
+    public float volume;
+
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
+
         Debug.Log("Alien Bullet shooting");
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = -transform.right * speed;
@@ -33,7 +39,9 @@ public class AlienBullet : MonoBehaviour
         PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
         if (player != null)
         {
-            player.health -= 1;
+            player.health -= 5;
+
+            source.PlayOneShot(playerImpacted, volume);
 
             DestroyProjectile();
         }

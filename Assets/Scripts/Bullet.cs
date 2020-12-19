@@ -12,8 +12,8 @@ public class Bullet : MonoBehaviour
     GameObject effect;
 
     AudioSource source;
-    float volLowRange = 0.5f;
-    float volHighRange = 1f;
+    public AudioClip enemyImpacted;
+    public float volume;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +39,7 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Hit Enemy");
             enemy.TakeDamage(damage);
+            source.PlayOneShot(enemyImpacted, volume);
         }
 
         // Instantiate(impactEffect, transform.position, transform.rotation);

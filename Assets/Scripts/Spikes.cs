@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
+    public AudioClip soundToPlay;
+    public float volume;
+    AudioSource audio;
+    // public bool alreadyPlayed = false;
+
     float ActiveTimer;
     bool active = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+
         ActiveTimer = 10f;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
@@ -45,6 +52,7 @@ public class Spikes : MonoBehaviour
         if (player != null && gameObject.GetComponent<SpriteRenderer>().enabled == true)
         {
             player.health -= 10;
+            audio.PlayOneShot(soundToPlay, volume);
         }
     }
 }
