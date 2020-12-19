@@ -181,4 +181,9 @@ public class PlayerMovement : MonoBehaviour
     {
         quitGame.SetActive(false);
     }
+
+    public void Continue()
+    {
+        SceneManager.LoadScene("MinerScene");
+    }
 }
