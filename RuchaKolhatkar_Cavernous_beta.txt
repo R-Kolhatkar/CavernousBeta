@@ -1,0 +1,14 @@
+RUCHA KOLHATKAR
+
+CAVERNOUS BETA RELEASE
+
+Build Zipped File on Google Drive: https://drive.google.com/drive/folders/1dQpXgoMW8bsGePQmE5rjoA-MYx6t_r0u?usp=sharing
+
+GitHub Repository: https://github.com/R-Kolhatkar/CavernousBeta
+
+Backstory: Miner goes into cave and fights aliens who have taken over the cave.
+Controls: 1: Melee Hit, 2: Shoot, Shift/Up = Jump, Left: Move Left, Right: Move Right, ESC: Exit Game
+
+Green Diamonds: increase health by 10
+Blue Diamonds: Spawned by aliens upon death, increase currency (diamonds) by 1
+Spikes: Decrease player health by 10 if player collides with them
